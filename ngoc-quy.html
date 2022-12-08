@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body,
+      h1,
+      p {
+        margin: 0;
+      }
+      .container {
+        min-height: 100vh;
+        font-family: Nunito Sans;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        max-width: 414px;
+        margin: auto;
+      }
+      .container img.avatar {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+      }
+      .container div.name {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-top: 16px;
+      }
+      .container div.name img {
+        width: 18px;
+        height: 18px;
+      }
+      .container p.introduc {
+        margin-top: 12px;
+        font-weight: 600;
+      }
+      .container div.social {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        width: 100%;
+        margin-top: 24px;
+      }
+      .container div.social div.link {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 8px;
+        width: calc(50% - 16px);
+        padding: 4px;
+        border-width: 1px;
+        border-style: solid;
+        border-radius: 8px;
+        cursor: pointer;
+      }
+      .container div.social div.link img.logo {
+        width: 40px;
+        height: 40px;
+        border-radius: 8px;
+      }
+      .container div.social div.link img.text {
+        width: auto;
+        height: 40px;
+      }
+      .container div.social div.link.facebook {
+        border-color: #3b5998;
+      }
+      .container div.social div.link.instagram {
+        border-color: #dd2a7b;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <img
+        class="avatar"
+        src="https://scontent.fsgn13-4.fna.fbcdn.net/v/t39.30808-1/314348478_1484309368741182_618683988909024422_n.jpg?stp=dst-jpg_s320x320&_nc_cat=107&ccb=1-7&_nc_sid=7206a8&_nc_ohc=O-gAjrj0SccAX9ORLl3&_nc_ht=scontent.fsgn13-4.fna&oh=00_AfA9XqsEvXj9cwc2QEAeZrArT7NoQKagTLkd3wv7i8W1MA&oe=6397D9E7"
+      />
+      <div class="name">
+        <h1>Ngọc Quý</h1>
+        <img src="./img/icon-verify.jpg" />
+      </div>
+      <p class="introduc">
+        Hello bạn! Link Facebook và sản phẩm mình để ở dưới nha
+      </p>
+      <div class="social">
+        <div class="link facebook">
+          <img class="logo" src="./img/icon-facebook.png" />
+          <img class="text" src="./img/text-facebook.png" />
+        </div>
+        <div class="link instagram">
+          <img class="logo" src="./img/icon-instagram.png" />
+          <img class="text" src="./img/text-instagram.jpg" />
+        </div>
+      </div>
+    </div>
+    <script>
+      function get_doc(id) {
+        const url =
+          "https://www.googleapis.com/drive/v3/files/" + id + "?alt=media";
+        //https://drive.google.com/file/d/1Wqg7SkjGwAZbBewh4OO1PaC5xcLyhuT2/view?usp=sharing
+        var setHeaders = new Headers();
+        // setHeaders.append("Authorization", "Bearer " + 'authToken.access_token');
+        // setHeaders.append("Content-Type", 'mime');
+
+        var setOptions = {
+          method: "GET",
+          headers: setHeaders,
+        };
+        fetch(url, setOptions)
+          .then((response) => {
+            if (response.ok) {
+              var reader = response.body.getReader();
+              var decoder = new TextDecoder();
+              reader.read().then(function (result) {
+                var data = {};
+                data = decoder.decode(result.value, { stream: !result.done });
+                console.log(data);
+              });
+            } else {
+              console.log("Response wast not ok");
+            }
+          })
+          .catch((error) => {
+            console.log("There is an error " + error.message);
+          });
+      }
+
+      get_doc("1Wqg7SkjGwAZbBewh4OO1PaC5xcLyhuT2");
+    </script>
+  </body>
+</html>
