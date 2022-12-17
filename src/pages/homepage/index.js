@@ -49,14 +49,16 @@ export default () => {
         <img src={ICON_VERIFY} />
       </div>
       <p className="introduc">
-        Hello bạn! Link Facebook và sản phẩm mình để ở dưới nha
+        Hello bạn! ◕‿◕
+        <br />
+        Link Facebook, Shopee và sản phẩm mình để ở dưới nha
       </p>
       <div className="social">
         <a className="link facebook" href="https://www.facebook.com/ngocquy114" target="_blank">
           <img className="logo" src={ICON_FB} />
           <img className="text" src={TEXT_FB} />
         </a>
-        <a className="link shopee" href="https://shopee.vn/ngaostore99">
+        <a className="link shopee" href="https://shopee.vn/ngaostore99" target="_blank">
           <img className="logo" src={ICON_SHOPEE} />
           <img className="text" src={TEXT_SHOPEE} />
         </a>
@@ -64,7 +66,7 @@ export default () => {
       <div className="products">
         {data.map(p => (
           <a key={`${p?.STT}-${p?.NAME}`} className="product" href={p?.SHOPEE_LINK} target="_blank">
-            <span className="sale-tag">-{p?.DISCOUNT}%</span>
+            {p?.DISCOUNT > 0 && <span className="sale-tag">-{p?.DISCOUNT}%</span>}
             <div className="info">
               <p className="name">{p?.NAME}</p>
               <p className="description">{p?.DESCRIPTION}</p>
