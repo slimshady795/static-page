@@ -53,13 +53,21 @@
 }
 .container div.social a.link img.text {
   width: auto;
-  height: 40px;
+  height: auto;
+  max-height: 40px;
+  max-width: calc(100% - 50px);
 }
 .container div.social a.link.facebook {
   border-color: #3b5998;
 }
 .container div.social a.link.instagram {
   border-color: #dd2a7b;
+}
+.container div.social a.link.shopee {
+  border-color: #ee4d2d;
+}
+.container div.social a.link.shopee .text {
+  max-height: 30px;
 }
 .container .products {
   width: 100%;

@@ -5,8 +5,8 @@ import AVATAR from '../../assets/imgs/avatar.jpg';
 import ICON_VERIFY from '../../assets/imgs/icon-verify.jpg';
 import ICON_FB from '../../assets/imgs/icon-facebook.png';
 import TEXT_FB from '../../assets/imgs/text-facebook.png';
-import ICON_IN from '../../assets/imgs/icon-instagram.png';
-import TEXT_IN from '../../assets/imgs/text-instagram.jpg';
+import ICON_SHOPEE from '../../assets/imgs/icon-shopee.png';
+import TEXT_SHOPEE from '../../assets/imgs/text-shopee.png';
 
 import './style.css';
 
@@ -18,7 +18,6 @@ export default () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    console.log('-=-=-=-=-=-')
     fetch(api)
       .then(res => res.text() || '')
       .then(res => {
@@ -36,11 +35,6 @@ export default () => {
               row => cols.reduce((acc, curr, idx) => curr ? ({ ...acc, [curr]: row?.c?.[idx]?.v }) : acc, {})
             )
         );
-        console.log(js,
-          (js?.table?.rows || [])
-            .map(
-              row => cols.reduce((acc, curr, idx) => curr ? ({ ...acc, [curr]: row?.c?.[idx]?.v }) : acc, {})
-            ))
       });
   }, []);
 
@@ -62,9 +56,9 @@ export default () => {
           <img className="logo" src={ICON_FB} />
           <img className="text" src={TEXT_FB} />
         </a>
-        <a className="link instagram">
-          <img className="logo" src={ICON_IN} />
-          <img className="text" src={TEXT_IN} />
+        <a className="link shopee" href="https://shopee.vn/ngaostore99">
+          <img className="logo" src={ICON_SHOPEE} />
+          <img className="text" src={TEXT_SHOPEE} />
         </a>
       </div>
       <div className="products">
