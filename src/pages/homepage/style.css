@@ -1,11 +1,11 @@
 .container {
-  min-height: 100vh;
   font-family: Nunito Sans;
   display: flex;
   flex-direction: column;
   align-items: center;
   max-width: 414px;
   margin: auto;
+  padding: 24px;
 }
 .container img.avatar {
   width: 150px;
